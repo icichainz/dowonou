@@ -1,2 +1,6 @@
 - Buy the domain name dowonou.com = $12 year
 - migrate the database to postgresql
+
+- get the frontend from mentorshipgo code source.
+- get the baackend from sendx or others sendx services.
+- I will use the finder template as html template.
