@@ -1,0 +1,2 @@
+- Buy the domain name dowonou.com = $12 year
+- migrate the database to postgresql
