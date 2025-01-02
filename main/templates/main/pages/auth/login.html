@@ -1,0 +1,115 @@
+{% extends "main/layout/base_auth.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+
+<main class="content-wrapper w-100 px-3 ps-lg-5 pe-lg-4 mx-auto" style="max-width: 1920px">
+    <div class="d-lg-flex">
+
+        <!-- Login form + Footer -->
+        <div class="d-flex flex-column min-vh-100 w-100 py-4 mx-auto me-lg-5" style="max-width: 416px">
+
+            <!-- Logo -->
+            <header class="navbar px-0 pb-4 mt-n2 mt-sm-0 mb-2 mb-md-3 mb-lg-4">
+                <a class="navbar-brand pt-0" href=".">
+                    <span class="d-flex flex-shrink-0 text-primary rtl-flip me-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="34">
+                            <path d="M34.5 16.894v10.731c0 3.506-2.869 6.375-6.375 6.375H17.5h-.85C7.725 33.575.5 26.138.5 17c0-9.35 7.65-17 17-17s17 7.544 17 16.894z" fill="currentColor"></path>
+                            <g fill-rule="evenodd">
+                                <path d="M17.5 13.258c-3.101 0-5.655 2.554-5.655 5.655s2.554 5.655 5.655 5.655 5.655-2.554 5.655-5.655-2.554-5.655-5.655-5.655zm-9.433 5.655c0-5.187 4.246-9.433 9.433-9.433s9.433 4.246 9.433 9.433a9.36 9.36 0 0 1-1.569 5.192l2.397 2.397a1.89 1.89 0 0 1 0 2.671 1.89 1.89 0 0 1-2.671 0l-2.397-2.397a9.36 9.36 0 0 1-5.192 1.569c-5.187 0-9.433-4.246-9.433-9.433z" fill="#000" fill-opacity=".05"></path>
+                                <g fill="#fff">
+                                    <path d="M17.394 10.153c-3.723 0-6.741 3.018-6.741 6.741s3.018 6.741 6.741 6.741 6.741-3.018 6.741-6.741-3.018-6.741-6.741-6.741zM7.347 16.894A10.05 10.05 0 0 1 17.394 6.847 10.05 10.05 0 0 1 27.44 16.894 10.05 10.05 0 0 1 17.394 26.94 10.05 10.05 0 0 1 7.347 16.894z"></path>
+                                    <path d="M23.025 22.525c.645-.645 1.692-.645 2.337 0l3.188 3.188c.645.645.645 1.692 0 2.337s-1.692.645-2.337 0l-3.187-3.187c-.645-.646-.645-1.692 0-2.337z"></path>
+                                </g>
+                            </g>
+                            <path d="M23.662 14.663c2.112 0 3.825-1.713 3.825-3.825s-1.713-3.825-3.825-3.825-3.825 1.713-3.825 3.825 1.713 3.825 3.825 3.825z" fill="#fff"></path>
+                            <path fill-rule="evenodd" d="M23.663 8.429a2.41 2.41 0 0 0-2.408 2.408 2.41 2.41 0 0 0 2.408 2.408 2.41 2.41 0 0 0 2.408-2.408 2.41 2.41 0 0 0-2.408-2.408zm-5.242 2.408c0-2.895 2.347-5.242 5.242-5.242s5.242 2.347 5.242 5.242-2.347 5.242-5.242 5.242-5.242-2.347-5.242-5.242z" fill="currentColor"></path>
+                        </svg>
+                    </span>
+                    {% trans "MentorshipGO" %}
+                </a>
+            </header>
+
+            <h1 class="h2 mt-auto">{% trans "Welcome back" %}</h1>
+           {% if form.errors %}
+           {% include "main/components/auth/messages.html" with message="Username or password maybe incorrect." %}
+           {% endif %}    
+            <div class="nav fs-sm mb-4">
+                {% trans "Don't have an account?" %}
+                <a class="nav-link text-decoration-underline p-0 ms-2" href="{% url "register" %}">{% trans "Create an account" %}</a>
+            </div>
+
+            <!-- Form -->
+            <form class="needs-validation" novalidate="" 
+            method="post"
+            action="{% url 'login' %}"
+            >
+            {% csrf_token %}
+                <div class="position-relative mb-4">
+                    <input type="text" name="{{form.username.name}}" class="form-control form-control-lg" 
+                    placeholder="{% trans 'Username' %}" required="true">
+                    <div class="invalid-tooltip bg-transparent py-0">{% trans 'Enter a valid username!' %}</div>
+                </div>
+                <div class="mb-4">
+                    <div class="password-toggle">
+                        <input type="password" name="{{form.password.name}}" class="form-control form-control-lg" 
+                        placeholder="{% trans 'Password' %}" required="true">
+                        <div class="invalid-tooltip bg-transparent py-0">{% trans 'Password is incorrect!' %}</div>
+                        <label class="password-toggle-button fs-lg" aria-label="{% trans 'Show/hide password' %}">
+                            <input type="checkbox" class="btn-check">
+                        </label>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <div class="form-check me-2">
+                        <input type="checkbox" class="form-check-input" id="remember-30" name="remember_me">
+                        <label for="remember-30" class="form-check-label">{% trans 'Remember for 30 days' %}</label>
+                    </div>
+                    <div class="nav">
+                        <a class="nav-link animate-underline p-0" href="{% static 'main/account-password-recovery.html' %}">
+                            <span class="animate-target">{% trans 'Forgot password?' %}</span>
+                        </a>
+                    </div>
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary w-100">{% trans 'Sign In' %}</button>
+            </form>
+
+             {% comment "this is the continue divider." %}
+             <!-- Divider -->
+            <div class="d-flex align-items-center my-4">
+                <hr class="w-100 m-0">
+                <span class="text-body-emphasis fw-medium text-nowrap mx-4">{% trans 'or continue with' %}</span>
+                <hr class="w-100 m-0">
+            </div>
+             {% endcomment %}
+
+            <!-- Social login -->
+            {% comment "Social login. To be added later." %}
+            <div class="d-flex flex-column flex-sm-row gap-3 pb-4 mb-3 mb-lg-4">
+                <button type="button" class="btn btn-lg btn-outline-secondary w-100 px-2">
+                    <i class="fi-google ms-1 me-1"></i>
+                    {% trans 'Google' %}
+                </button>
+                <button type="button" class="btn btn-lg btn-outline-secondary w-100 px-2">
+                    <i class="fi-facebook ms-1 me-1"></i>
+                    {% trans 'Facebook' %}
+                </button>
+                <button type="button" class="btn btn-lg btn-outline-secondary w-100 px-2">
+                    <i class="fi-apple ms-1 me-1"></i>
+                    {% trans 'Apple' %}
+                </button>
+            </div> 
+            {% endcomment %}
+
+            <!-- Footer -->
+            {% include 'main/components/auth/footer.html' %}
+        </div>
+
+        <!-- Cover image visible on screens > 992px wide (lg breakpoint) -->
+       {% include 'main/components/auth/cover_girl.html' %}
+    </div>
+</main>
+{% endblock content %}  

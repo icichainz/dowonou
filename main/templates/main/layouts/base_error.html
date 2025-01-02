@@ -1,0 +1,68 @@
+{% load static %}
+{% load i18n %}
+{% load cache %}
+<!DOCTYPE html><html lang="en" data-bs-theme="light" data-pwa="true">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    {% load static %}
+
+<meta charset="utf-8">
+
+<!-- Viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+
+<!-- SEO Meta Tags -->
+<title>Dowonou | Account - Sign In</title>
+<meta name="description" content="Finder - Directory &amp; Listings Bootstrap HTML Template">
+<meta name="keywords" content="directory, listings, search, car dealer, real estate, city guide, business listings, medical directories, event listings, e-commerce, market, multipurpose, ui kit, light and dark mode, bootstrap, html5, css3, javascript, gallery, slider, mobile, pwa">
+<meta name="author" content="Createx Studio">
+
+<!-- Webmanifest + Favicon / App icons -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="manifest" href="{% static 'main/manifest.json' %}">
+<link rel="icon" type="image/png" href="{% static 'main/assets/app-icons/icon-32x32.png' %}" sizes="32x32">
+<link rel="apple-touch-icon" href="{% static 'main/assets/app-icons/icon-180x180.png' %}">
+
+<!-- Theme switcher (color modes) -->
+<script src="{% static 'main/assets/js/theme-switcher.js' %}"></script>
+
+<!-- Preloaded local web font (Inter) -->
+<link rel="preload" href="{% static 'main/assets/fonts/inter-variable-latin.woff2' %}" as="font" type="font/woff2" crossorigin="">
+
+<!-- Font icons -->
+<link rel="preload" href="{% static 'main/assets/icons/finder-icons.woff2' %}" as="font" type="font/woff2" crossorigin="">
+<link rel="stylesheet" href="{% static 'main/assets/icons/finder-icons.min.css' %}">
+
+<!-- Bootstrap + Theme styles -->
+<link rel="preload" href="{% static 'main/assets/css/theme.min.css' %}" as="style">
+<link rel="preload" href="{% static 'main/assets/css/theme.rtl.min.css' %}" as="style">
+<link rel="stylesheet" href="{% static 'main/assets/css/theme.min.css' %}" id="theme-styles">
+
+<!-- Customizer -->
+<script src="{% static 'main/assets/js/customizer.min.js' %}"></script>
+
+
+  </head>
+
+
+  <!-- Body -->
+  <body>
+
+
+
+    <!-- Page content -->
+    {% block content %}
+    
+    {% endblock content %} 
+
+
+
+
+    <!-- Bootstrap + Theme scripts -->
+    <script src="{% static 'main/assets/js/theme.min.js' %}"></script>
+  
+
+</body>
+
+</html>

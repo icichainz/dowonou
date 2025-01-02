@@ -1,0 +1,15 @@
+{
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 80,
+    "editor.fontSize": 12,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports.ruff": "always",
+    },
+    "editor.fontFamily": "Jetbrains Mono",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "600",
+    "terminal.integrated.fontFamily": "Jetbrains Mono",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontWeight": "600",
+}

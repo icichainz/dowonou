@@ -3,17 +3,18 @@ from celery import Celery
 from django.conf import settings
 
 # Set the default Django settings module for the 'celery' program.
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dowonou.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dowonou.settings")
 
 # Create the Celery application
-app = Celery('dowonou')
+app = Celery("dowonou")
 
 # Configure Celery using Django settings
-app.config_from_object('django.conf:settings', namespace='CELERY')
+app.config_from_object("django.conf:settings", namespace="CELERY")
 
 # Load task modules from all registered Django app configs.
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
+
 @app.task(bind=True, ignore_result=True)
 def debug_task(self):
-    print(f'Request: {self.request!r}')
+    print(f"Request: {self.request!r}")
