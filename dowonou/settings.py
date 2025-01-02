@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_celery_beat",
     "django_celery_results",
-    "django_filters", 
+    "django_filters",
     "django_extensions",
 ]
 
@@ -90,22 +90,20 @@ WSGI_APPLICATION = "dowonou.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-
-
 DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": os.getenv("DB_POSTGRES_NAME"),  
-            "USER": os.getenv("DB_POSTGRES_USER"),  
-            "PASSWORD": os.getenv(
-                "DB_POSTGRES_PASSWORD"
-            ),  
-            "HOST": os.getenv(
-                "DB_POSTGRES_HOST"
-            ),  
-            "PORT": os.getenv("DB_POSTGRES_PORT"),  
-        }
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("DB_POSTGRES_NAME"),
+        "USER": os.getenv("DB_POSTGRES_USER"),
+        "PASSWORD": os.getenv(
+            "DB_POSTGRES_PASSWORD"
+        ),
+        "HOST": os.getenv(
+            "DB_POSTGRES_HOST"
+        ),
+        "PORT": os.getenv("DB_POSTGRES_PORT"),
     }
+}
 
 
 # Password validation
@@ -154,7 +152,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Celery Configuration
-CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_BROKER_URL = "redis://redis:6379/1"
 CELERY_RESULT_BACKEND = "django-db"
 CELERY_ACCEPT_CONTENT = ["application/json"]
 CELERY_TASK_SERIALIZER = "json"
@@ -177,15 +175,15 @@ EMAIL_HOST_PASSWORD = ""  # Add your email password or app-specific password
 AUTH_USER_MODEL = "main.User"
 
 # Login/Logout URLs
-LOGIN_URL = "rental_platform:login"
-LOGIN_REDIRECT_URL = "rental_platform:home"
-LOGOUT_REDIRECT_URL = "rental_platform:home"
+LOGIN_URL = "main:login"
+LOGIN_REDIRECT_URL = "main:index"
+LOGOUT_REDIRECT_URL = "main:index"
 
 # Cache settings
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://localhost:6379/1",
+        "LOCATION": "redis://redis:6379/1",
     }
 }
 

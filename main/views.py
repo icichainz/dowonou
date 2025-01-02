@@ -15,7 +15,7 @@ from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.db.models import Q, Avg
 from django.core.paginator import Paginator
-from django.shortcuts import render 
+from django.shortcuts import render
 from .models import (
     Tool,
     Rental,
@@ -32,16 +32,9 @@ from .forms import (
 )
 
 
-def index_page(request):
-    return render(
-        request,
-        "main/pages/index.html",
-        {}
-    )
-
 class HomeView(ListView):
     model = Tool
-    template_name = "home.html"
+    template_name = "main/pages/index.html"
     context_object_name = "featured_tools"
 
     def get_queryset(self):
@@ -68,7 +61,8 @@ class ToolListView(ListView):
             queryset = queryset.filter(category__name=category)
         if search_query:
             queryset = queryset.filter(
-                Q(name__icontains=search_query) | Q(description__icontains=search_query)
+                Q(name__icontains=search_query) | Q(
+                    description__icontains=search_query)
             )
 
         return queryset.order_by("-created_at")
@@ -198,7 +192,8 @@ def search_tools(request):
         Q(name__icontains=query) | Q(description__icontains=query)
     )
     data = [
-        {"id": tool.id, "name": tool.name, "hourly_rate": str(tool.hourly_rate)}
+        {"id": tool.id, "name": tool.name,
+            "hourly_rate": str(tool.hourly_rate)}
         for tool in tools
     ]
     return JsonResponse(data, safe=False)

@@ -10,7 +10,7 @@
     </button>
 
     <!-- Navbar brand (Logo) -->
-    <a class="navbar-brand py-1 py-md-2 py-xl-1 me-2 me-sm-n4 me-md-n5 me-lg-0" href="{% url "main:index" %}">
+    <a class="navbar-brand py-1 py-md-2 py-xl-1 me-2 me-sm-n4 me-md-n5 me-lg-0" href="{% url "main:home" %}">
       <span class="d-none d-sm-flex flex-shrink-0 text-primary rtl-flip me-2">
         <svg xmlns="http://www.w3.org/2000/svg" width="35" height="34">
           <path
@@ -51,7 +51,7 @@
       <div class="offcanvas-body pt-2 pb-4 py-lg-0 mx-lg-auto">
         <ul class="navbar-nav position-relative">
           <li class="nav-item dropdown py-lg-2 me-lg-n1 me-xl-0">
-            <a class="nav-link  {% if request.path == '' %}activate{% endif %}" aria-current="page" href="{% url 'main:index' %}" role="button"
+            <a class="nav-link  {% if request.path == '' %}activate{% endif %}" aria-current="page" href="{% url 'main:home' %}" role="button"
               data-bs-toggle="dropdown" data-bs-trigger="hover" aria-expanded="false">
               {% trans "Home" %}
             </a>

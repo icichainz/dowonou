@@ -1,4 +1,4 @@
-{% extends "main/layout/base_auth.html" %}
+{% extends "main/layouts/base_auth.html" %}
 {% load static %}
 {% load i18n %}
 
@@ -28,7 +28,7 @@
                             <path fill-rule="evenodd" d="M23.663 8.429a2.41 2.41 0 0 0-2.408 2.408 2.41 2.41 0 0 0 2.408 2.408 2.41 2.41 0 0 0 2.408-2.408 2.41 2.41 0 0 0-2.408-2.408zm-5.242 2.408c0-2.895 2.347-5.242 5.242-5.242s5.242 2.347 5.242 5.242-2.347 5.242-5.242 5.242-5.242-2.347-5.242-5.242z" fill="currentColor"></path>
                         </svg>
                     </span>
-                    {% trans "MentorshipGO" %}
+                    {% trans "Dowonou" %}
                 </a>
             </header>
 
@@ -36,15 +36,17 @@
            {% if form.errors %}
            {% include "main/components/auth/messages.html" with message="Username or password maybe incorrect." %}
            {% endif %}    
-            <div class="nav fs-sm mb-4">
+             {% comment "" %}
+             <div class="nav fs-sm mb-4">
                 {% trans "Don't have an account?" %}
                 <a class="nav-link text-decoration-underline p-0 ms-2" href="{% url "register" %}">{% trans "Create an account" %}</a>
             </div>
+             {% endcomment %}
 
             <!-- Form -->
             <form class="needs-validation" novalidate="" 
             method="post"
-            action="{% url 'login' %}"
+            action="{% url 'main:login' %}"
             >
             {% csrf_token %}
                 <div class="position-relative mb-4">

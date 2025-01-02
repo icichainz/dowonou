@@ -1,7 +1,10 @@
 - Buy the domain name dowonou.com = $12 
 
 - migrate the database to postgresql = Done
-
+- enable service workerfunctionnalities.
 - get the frontend from Dowonou code source = Done.
-- get the baackend from sendx or others sendx services.
-- I will use the finder template as html template.
+- finaly i will use the admin provided by the finder app.
+- I will use the finder template as html template for backoffice aswell of frontoffice.
+
+TODO: Next 
+- Integrate the authentication completely.

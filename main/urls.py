@@ -1,13 +1,20 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from . import views
-
+from django.contrib.auth import views as auth_views
 app_name = "main"
 
+auth_urls = [
+    path("login/", auth_views.LoginView.as_view(
+        template_name="main/pages/auth/login.html"
+    ), name="login"),
+]
+
 urlpatterns = [
-    path("",views.index_page,name="index"),
+
     # Home and search
-   # path("", views.HomeView.as_view(), name="home"),
+    path('accounts/', include(auth_urls)),
+    path("", views.HomeView.as_view(), name="home"),
     path("search/", views.ToolListView.as_view(), name="search"),
     path("ajax/search-tools/", views.search_tools, name="ajax_search_tools"),
     # Tool related URLs
@@ -23,7 +30,8 @@ urlpatterns = [
     # User related URLs
     path("my-tools/", views.MyToolsView.as_view(), name="my_tools"),
     path("profile/", views.UserProfileView.as_view(), name="user_profile"),
-    path("preferences/", views.UserPreferencesView.as_view(), name="user_preferences"),
+    path("preferences/", views.UserPreferencesView.as_view(),
+         name="user_preferences"),
     # Review URLs
     path(
         "rental/<int:rental_pk>/review/",
